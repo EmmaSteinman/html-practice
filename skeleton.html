@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Doodler</title>
+    </head>
+    <body>
+        <canvas id="canvas" width="600" height = "600"></canvas> 
+        <br />
+        <input type = "color" id = "color" onchange = "changeColor()"/>
+        <script>
+            var canvas = document.getElementById("canvas");
+            var context = canvas.getContext("2d");
+            var drawing = false;
+            var color = "black";
+            
+            canvas.addEventListener("mousemove", mouseMove);
+            canvas.addEventListener("mousedown", mouseDown);
+            canvas.addEventListener("mouseup", mouseUp);
+            
+    
+            
+            function mouseMove (event)
+            {
+                var x = event.pageX;
+                var y = event.pageY;
+                if (drawing == true)
+                    context.fillRect(x, y, 10, 10);
+            }
+            
+            function mouseDown (event)
+            {
+               drawing = true; 
+            }
+            
+            function mouseUp (event)
+            {
+                drawing = false;
+            }
+            
+            function changeColor()
+            {
+                color = document.getElementById("color").value;
+                context.fillStyle = color;
+            }
+        </script>
+    </body>
+</html>
+        
